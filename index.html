@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUÔI TAO PROJECT | Save "HaoLE"</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-green: #2d6a4f;
+            --light-green: #d8f3dc;
+            --accent-green: #40916c;
+            --text-dark: #1b4332;
+            --white: #ffffff;
+            --gold: #ffb703;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-green);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Pacifico', cursive;
+            font-weight: 400;
+        }
+
+        .highlight {
+            color: var(--primary-green);
+        }
+
+        /* Header / Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(45, 106, 79, 0.9), rgba(64, 145, 108, 0.8)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn-cta {
+            padding: 15px 40px;
+            background-color: var(--white);
+            color: var(--primary-green);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background-color: var(--gold);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: 1.1rem;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(45, 106, 79, 0.1);
+        }
+
+        /* Menu Donation Cards */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--light-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* QR Section */
+        #donate {
+            background-color: var(--white);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .qr-box {
+            background: var(--light-green);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .qr-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 2px dashed var(--primary-green);
+            font-family: 'Pacifico';
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .qr-img {
+            width: 100%;
+            height: 100%;
+	   /* object-fit: contain;  Để QR không bị méo */
+           /* padding: 10px;        Tạo khoảng cách đều trong khung */
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .copy-btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .about-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Dự Án Nuôi Tao</h1>
+        <p>Quỹ bảo tồn và phát triển sự sống cho một cá thể đang đói <br> (là tôi).<br>Mọi sự đóng góp đều được quy đổi thành Calories.</p>
+        <a href="#donate" class="btn-cta">Cứu Đói Ngay <i class="fas fa-utensils"></i></a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="text-center">
+            <h2 class="section-title">Tại sao phải "Nuôi Tao"?</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Chào các bạn, là <strong>Tao</strong>.</p>
+                <br>
+                <p>Tôi là một sinh vật hoạt động bằng cơm, trà sữa và đôi khi là niềm tin. Để tiếp tục cống hiến những ý tưởng hay ho, những dòng code sạch đẹp (hoặc đơn giản là để tôi không bị tụt đường huyết), tôi cần sự chung tay của cộng đồng.</p>
+                <br>
+                <p style="font-family: 'Pacifico'; font-size: 1.4rem; color: var(--primary-green);">"Một miếng khi đói bằng một gói khi no. Hãy nuôi tao đi!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section">
+        <div class="text-center">
+            <h2 class="section-title">Thực Đơn Cứu Trợ</h2>
+            <p>Chọn khẩu phần bạn muốn mời tôi</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Item 1 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-coffee"></i></div>
+                <h3>Ly Cà Phê</h3>
+                <span class="price">20.000 VNĐ</span>
+                <p>Giúp tôi tỉnh táo để làm brief piching.</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-bread-slice"></i></div>
+                <h3>Ổ Bánh Mì</h3>
+                <span class="price">30.000 VNĐ</span>
+                <p>Năng lượng tối thiểu để viết content, làm SEO, lên plan, brainstorm… cùng một lúc</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                <h3>Tô Phở Bò</h3>
+                <span class="price">50.000 VNĐ</span>
+                <p>Đóng góp trực tiếp vào sự tồn tại của một Digital Marketer đa hệ, đa nhiệm, đa deadline.</p>
+            </div>
+            <!-- Item 4 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <h3>Combo V.I.P</h3>
+                <span class="price">Tuỳ Tâm</span>
+                <p>Bạn là cổ đông chiến lược của cuộc đời tôi!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="section">
+        <div class="text-center">
+            <h2 class="section-title">Cổng Thanh Toán</h2>
+            <p>Quét mã bên dưới để chuyển hoá tình yêu thương thành vật chất</p>
+        </div>
+
+        <div class="qr-container">
+
+    <!-- Momo -->
+    <div class="qr-box">
+        <h3><i class="fas fa-wallet"></i> Momo</h3>
+
+        <div class="qr-placeholder">
+            <img src="qrmomo.jpg" class="qr-img" alt="Momo QR">
+        </div>
+
+        <p>LE TAN HAO – 0365 600 456</p>
+
+        <button class="copy-btn" onclick="copyToClipboard('0365 600 456')">
+            Copy SĐT
+        </button>
+    </div>
+
+    <!-- Bank -->
+    <div class="qr-box">
+        <h3><i class="fas fa-university"></i> Vietcombank</h3>
+
+        <div class="qr-placeholder">
+            <img src="qrbank.png" class="qr-img" alt="Bank QR">
+        </div>
+
+        <p>LE TAN HAO – 0041000393026<br></p>
+
+        <button class="copy-btn" onclick="copyToClipboard('0041000393026')">
+            Copy STK
+        </button>
+    </div>
+
+</div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Nuôi HaoLE!</h2>
+        <p>&copy; 2025 Designed with <i class="fas fa-heart" style="color: #ffb703;"></i></p>
+    </footer>
+
+    <script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert(
+                'Đã copy số tài khoản: ' + text + 
+                '\nThí chủ đừng chần chờ - Công đức vô lượng!'
+            );
+        }, function(err) {
+            console.error('Lỗi copy: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
